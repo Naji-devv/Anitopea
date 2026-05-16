@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in to Anitopea acount</title>
+    <link rel="stylesheet" href="">
+    <style>
+        /*global environment*/
+        
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top left, #1a1a1a, #000033, #330000);
+            color: white;
+            overflow-x: hidden;
+        }
+        /* Navbar */
+        /* Login Section */
+        
+        .login-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.2), rgba(0, 0, 255, 0.2), transparent);
+        }
+        
+        .login-card {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.6), 0 0 35px rgba(0, 0, 255, 0.6);
+            width: 350px;
+        }
+        
+        .login-card h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff0000, 0 0 15px #0000ff;
+        }
+        
+        .login-card label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        
+        .login-card input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        
+        .login-card input:focus {
+            outline: none;
+            box-shadow: 0 0 10px #ff0000, 0 0 15px #0000ff;
+        }
+        
+        .login-card button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #ff0000, #0000ff);
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .login-card button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ff0000, 0 0 20px #0000ff;
+        }
+    </style>
+
+    <script>
+        // Navbar Interaction
+        const navItems = document.querySelectorAll('nav ul li');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (item.dataset.section === "home") {
+                    // Scroll smoothly to login section
+                    document.querySelector('#login').scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                } else {
+                    alert(`Navigating to ${item.dataset.section} section...`);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Login Section -->
+    <section id="login" class="login-section">
+        <div class="login-card">
+            <h2>Login to Anitopea</h2>
+            <form>
+                <label for="username">Name</label>
+                <input type="text" id="username" placeholder="Enter your name">
+
+                <label for="password">New Password</label>
+                <input type="password" id="password" placeholder="Enter new password">
+
+                <label for="phone">Email acount </label>
+                <input type="tel" id="phone" placeholder="Enter Email account">
+
+                <button type=" submit ">Login</button>
+            </form>
+            </a>
+        </div>
+    </section>
+
+</body>
+
+</html>

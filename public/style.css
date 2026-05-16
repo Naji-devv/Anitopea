@@ -1,0 +1,276 @@
+/* ===== Global Reset ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ===== Body & Background ===== */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top left, #0d0d0d, #1a1a2e, #330000);
+    color: #f0f0f0;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+
+/* ===== Navbar ===== */
+
+nav {
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 0 30px rgba(0, 0, 255, 0.5);
+}
+
+nav .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #0000ff;
+    transition: transform 0.3s ease;
+}
+
+nav .logo:hover {
+    transform: scale(1.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav ul li {
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #ccc;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav ul li:hover {
+    color: #ff3333;
+    text-shadow: 0 0 10px #0000ff;
+}
+
+
+/* ===== Anime Grid ===== */
+
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 50px;
+}
+
+.anime-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.3), 0 0 40px rgba(0, 0, 255, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.anime-card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px rgba(255, 0, 0, 0.7), 0 0 60px rgba(0, 0, 255, 0.7);
+}
+
+.anime-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.anime-card:hover img {
+    transform: scale(1.05);
+}
+
+.anime-card h3 {
+    text-align: center;
+    padding: 15px;
+    font-size: 1.3rem;
+    background: linear-gradient(90deg, rgba(255, 0, 0, 0.6), rgba(0, 0, 255, 0.6));
+    margin: 0;
+    color: #fff;
+    text-shadow: 0 0 5px #000;
+}
+
+
+/* ===== Aura Glow Effect ===== */
+
+.aura {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.3), rgba(0, 0, 255, 0.3), transparent);
+    animation: auraMove 6s infinite linear;
+    z-index: -1;
+}
+
+@keyframes auraMove {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+
+/* ===== Smooth Scroll ===== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Hamburger menu hidden by default */
+
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+
+/* Mobile menu styling */
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    nav ul.active {
+        display: flex;
+    }
+    .hamburger {
+        display: block;
+    }
+}
+
+
+/* Login Section */
+
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.2), rgba(0, 0, 255, 0.2), transparent);
+}
+
+.login-card {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.6), 0 0 35px rgba(0, 0, 255, 0.6);
+    width: 350px;
+}
+
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff0000, 0 0 15px #0000ff;
+}
+
+.login-card label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.login-card input:focus {
+    outline: none;
+    box-shadow: 0 0 10px #ff0000, 0 0 15px #0000ff;
+}
+
+.login-card button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ff0000, #0000ff);
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.login-card button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ff0000, 0 0 20px #0000ff;
+}
+
+.anime-detail {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.6), 0 0 35px rgba(0, 0, 255, 0.6);
+    text-align: center;
+}
+
+.anime-detail h1 {
+    text-shadow: 0 0 10px #ff0000, 0 0 15px #0000ff;
+}
+
+.anime-detail img {
+    width: 100%;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 0 30px rgba(0, 0, 255, 0.5);
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ff0000, #0000ff);
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.back-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ff0000, 0 0 20px #0000ff;
+}

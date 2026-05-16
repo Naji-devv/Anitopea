@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images\icon.png" type="image/png">
+    <title>Anitopea</title>
+    <link rel=" stylesheet " href="style.css ">
+    <script>
+        console.log("JavaScript linked successfully! ");
+    </script>
+    <style>
+        /* Global Styles */
+        
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top left, #1a1a1a, #000033, #330000);
+            color: white;
+            overflow-x: hidden;
+        }
+        /* Navbar */
+        
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6), 0 0 25px rgba(0, 0, 255, 0.6);
+        }
+        
+        nav .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #0000ff;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li:hover {
+            color: #ff3333;
+            text-shadow: 0 0 10px #0000ff;
+        }
+        /* Anime Grid */
+        
+        .anime-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 40px;
+        }
+        
+        .anime-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4), 0 0 40px rgba(0, 0, 255, 0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .anime-card:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.8), 0 0 60px rgba(0, 0, 255, 0.8);
+        }
+        
+        .anime-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .anime-card h3 {
+            text-align: center;
+            padding: 15px;
+            font-size: 1.3rem;
+            background: linear-gradient(90deg, rgba(255, 0, 0, 0.6), rgba(0, 0, 255, 0.6));
+            margin: 0;
+        }
+        /* Aura Glow Effect */
+        
+        .aura {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.3), rgba(0, 0, 255, 0.3), transparent);
+            animation: auraMove 6s infinite linear;
+            z-index: -1;
+        }
+        
+        @keyframes auraMove {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.2);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo ">Anitopea</div>
+        <ul>
+            <a href="log_in.html ">
+                <li data-section="home ">Home</li>
+            </a>
+            <li data-section="popular ">Popular</li>
+            <li data-section="new ">New Releases</li>
+            <li data-section="genres ">Genres</li>
+            <li data-section="about ">About</li>
+        </ul>
+    </nav>
+
+    <!-- Anime Grid -->
+    <section class="anime-grid ">
+        <div class="anime-card ">
+            <div class="aura "></div>
+            <a href="one_piece.html ">
+                <img src="images/66eb10243b86105609aac5d695d0c3cd.jpg " alt="One Piece Poster ">
+                <h3>One Piece</h3>
+            </a>
+        </div>
+
+        <div class="anime-card ">
+            <div class="aura "></div>
+            <a href="solo__leveling.html ">
+                <img src="images/492b3853ade1997ee3d128bdaf39aff1.jpg " alt="Solo Leveling Poster ">
+                <h3>Solo Leveling</h3>
+            </a>
+        </div>
+        <div class="anime-card ">
+            <div class="aura "></div>
+            <a href="jujutsu_kaisen.html ">
+                <img src="images/a9a6a10db66d0a1025c8d9c84e15088c.jpg " alt="Jujutsu Kaisen Poster ">
+                <h3>Jujutsu Kaisen</h3>
+            </a>
+        </div>
+        <div class="anime-card ">
+            <a href="naruto_shippuden.html ">
+                <img src="images/aecb947d526dd2ff248b11199a2d8a36.jpg " alt="naruto_shippuden Poster ">
+                <h3>Naruto Shippuden</h3>
+            </a>
+        </div>
+        <div class="anime-card ">
+            <a href="bleach.html ">
+                <div class=" aura "></div>
+                <img src="images/13d2aa015b4917ae364777d0b5d06004.jpg " alt="bleach poster ">
+                <h3>Bleach</h3>
+            </a>
+        </div>
+        <div class="anime-card ">
+            <a href="black_clover.html ">
+                <div class="aura "></div>
+                <img src="images/5e580b28609271950b6bc550fb16f392.jpg " alt="black_clover poster ">
+                <h3>Black Clover </h3>
+            </a>
+        </div>
+        <div class="anime-card ">
+            <a href="daily_life_of_an_immortal_king.html ">
+                <div class="aura "></div>
+                <img src="images/007150808cb0ebe06ead048e8075fb16.jpg " alt=" ">
+                <h3>Daily Life of an Immortal King</h3>
+            </a>
+        </div>
+        </div>
+
+    </section>
+
+    <section class="anime-grid ">
+        <div class="anime-card ">
+            <a href="demon_slayer.html ">
+                <div class="aura "></div>
+                <img src="images\ba23a000593fb558f748dadc1905ea57.jpg " alt="Demon Slayer ">
+                <h3>Demon Slayer</h3>
+            </a>
+        </div>
+        <div class="anime-card ">
+            <a href="blue_lock.html ">
+                <div class="aura "></div>
+                <img src="images\bl.jpg " alt="blue lock ">
+                <h3>Blue lock</h3>
+            </a>
+        </div>
+        <div class="anime-card ">
+            <a href="dragon_ball.html ">
+                <div class="aura "></div>
+                <img src="images\4e7877d4f4daea704dd3be642932ec6d.jpg " alt="Dragon Ball ">
+                <h3>Dragon Ball </h3>
+            </a>
+        </div>
+        <div class="anime-card ">
+            <a href="fire_force.html ">
+                <div class="aura "></div>
+                <img src=" images\New folder\ff2.jpg " alt="Fire Force ">
+                <h3>Fire Force</h3>
+            </a>
+        </div>
+        <div class="anime-card ">
+            <a href="failure_frame.html ">
+                <div class="aura "></div>
+                <img src="images\New folder\failure f 2.jpg " alt="Failure Frame ">
+                <h3>Failure Frame</h3>
+            </a>
+        </div>
+        <div class="anime-card ">
+            <a href="class_room_of_elites.html ">
+                <div class="aura "></div>
+                <img src="images\New folder\c of e.jpg " alt="Class Room Of Elites ">
+                <h3>Classroom Of Elites</h3>
+            </a>
+        </div>
+        <div class="anime-card ">
+            <a href="dadadan.html ">
+                <div class="aura "></div>
+                <img src=" images\New folder\ddd2.jpg " alt="Ddadan ">
+                <h3>Dandadan</h3>
+            </a>
+        </div>
+        <!-- Anime Detail Section (hidden by default) -->
+        <section id="anime-detail " class="anime-detail " style="display:none; ">
+            <h1 id="anime-title "></h1>
+            <!-- Insert banner image here -->
+            <img id="anime-image " src=" " alt="Anime Banner ">
+            <p id="anime-description "></p>
+            <a href="# " id="back-btn " class="back-btn ">⬅ Back to Home</a>
+        </section>
+
+
+        <script>
+            // Navbar Interaction
+            const navItems = document.querySelectorAll('nav ul li');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    alert(`Navigating to ${item.dataset.section} section...`);
+                });
+            });
+
+            // Aura Interaction
+            const cards = document.querySelectorAll('.anime-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const aura = card.querySelector('.aura');
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    aura.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255,0,0,0.4), rgba(0,0,255,0.4), transparent)`;
+                });
+            });
+        </script>
+</body>
+
+</html>

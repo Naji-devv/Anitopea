@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solo Leveling - Anitopea</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top left, #1a1a1a, #000033, #330000);
+            color: white;
+        }
+        
+        .anime-detail {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.6), 0 0 35px rgba(0, 0, 255, 0.6);
+        }
+        
+        .anime-detail h1 {
+            text-align: center;
+            text-shadow: 0 0 10px #ff0000, 0 0 15px #0000ff;
+        }
+        
+        .anime-detail img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), 0 0 30px rgba(0, 0, 255, 0.5);
+        }
+        
+        .anime-detail p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .back-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #ff0000, #0000ff);
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #ff0000, 0 0 20px #0000ff;
+        }
+        
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            padding: 40px;
+        }
+        
+        .character-grid h2 {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff0000, 0 0 15px #0000ff;
+        }
+        
+        .character-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.4), 0 0 40px rgba(0, 0, 255, 0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .character-card:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.8), 0 0 60px rgba(0, 0, 255, 0.8);
+        }
+        
+        .character-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .character-card h3 {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px #ff0000, 0 0 10px #0000ff;
+        }
+        
+        .character-card p {
+            padding: 0 10px 15px;
+            font-size: 0.95rem;
+        }
+    </style>
+    <script>
+        // Create modal dynamically
+        const modal = document.createElement('div');
+        modal.id = 'character-modal';
+        modal.style.display = 'none';
+        modal.innerHTML = `
+  <div class="modal-content">
+    <span id="close-modal">&times;</span>
+    <h2 id="modal-title"></h2>
+    <img id="modal-image" src="" alt="">
+    <p id="modal-description"></p>
+  </div>
+`;
+        document.body.appendChild(modal);
+
+        // Style modal with aura glow
+        const style = document.createElement('style');
+        style.innerHTML = `
+  #character-modal {
+    position: fixed;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.8);
+    display:flex; justify-content:center; align-items:center;
+    z-index:2000;
+  }
+  .modal-content {
+    background: rgba(0,0,0,0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(255,0,0,0.6), 0 0 35px rgba(0,0,255,0.6);
+    text-align:center;
+    max-width:600px;
+  }
+  .modal-content img {
+    width:100%; border-radius:10px; margin:20px 0;
+  }
+  #close-modal {
+    cursor:pointer; font-size:2rem; color:#fff;
+    position:absolute; top:20px; right:30px;
+  }
+`;
+        document.head.appendChild(style);
+
+        // Character data
+        const characterData = {
+            luffy: {
+                title: "Monkey D. Luffy",
+                image: "images/luffy.jpg",
+                description: "Captain of the Straw Hat Pirates, with rubber powers and a dream to be Pirate King."
+            },
+            zoro: {
+                title: "Roronoa Zoro",
+                image: "images/zoro.jpg",
+                description: "Master swordsman wielding three blades, loyal to Luffy and aiming to be the greatest."
+            },
+            nami: {
+                title: "Nami",
+                image: "images/nami.jpg",
+                description: "Navigator with unmatched skill in maps and weather, guiding the crew safely."
+            },
+            sanji: {
+                title: "Sanji",
+                image: "images/sanji.jpg",
+                description: "Cook and fighter, using his legs in combat, dreaming of the legendary All Blue."
+            }
+        };
+
+        // Open modal on card click
+        document.querySelectorAll('.character-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const key = card.dataset.character;
+                const data = characterData[key];
+                if (data) {
+                    document.getElementById('modal-title').innerText = data.title;
+                    document.getElementById('modal-image').src = data.image;
+                    document.getElementById('modal-description').innerText = data.description;
+                    modal.style.display = 'flex';
+                }
+            });
+        });
+
+        // Close modal
+        document.getElementById('close-modal').addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+    </script>
+</head>
+
+<body>
+    <div class="anime-detail">
+        <h1>Jujutsu Kaisen</h1>
+        <!-- Insert your banner or poster image here -->
+        <img src="images\New folder\jujutsu kaisen 2.jpg" alt="One Piece Banner">
+
+        <video width="640" height="360" controls>
+  <source src="" type="video/mp4">
+
+</video>
+        <p>
+            watch solo leveling as Sung Jinwoo the weakest hunter reawakens as one of the strongesst S rank hunter s in the world
+        </p>
+
+
+        <!-- One Piece Character Highlights -->
+        <section id="one-piece-characters" class="character-grid">
+            <h2>Jujutsu Kaisen Character Highlights</h2>
+
+            <div class="character-card" data-character="luffy">
+                <div class="aura"></div>
+                <!-- Insert character image here -->
+                <img src="images\15f9b5137c9b5459c3bdc66c018aab60.jpg" alt=" Sung Jinwoo ">
+                <h3>Saturo Gojo</h3>
+                <p></p>
+            </div>
+
+            <div class="character-card " data-character="zoro ">
+                <div class="aura "></div>
+                <img src=" images\megumi.jpg" alt="Sung Jinah ">
+                <h3>Megumi</h3>
+                <p>The swordsman who wields three blades, loyal to Luffy and determined to be the world’s greatest swordsman.</p>
+            </div>
+
+            <div class="character-card " data-character="nami ">
+                <div class="aura "></div>
+                <img src="" alt="Igris " height="">
+                <h3>Igris</h3>
+                <p>The navigator with a sharp mind for maps and money, guiding the crew safely through treacherous seas.</p>
+            </div>
+
+            <div class="character-card " data-character="sanji ">
+                <div class="aura "></div>
+                <img src=" " alt="Sanji ">
+                <h3></h3>
+                <p>The Straw Hat cook, a master of martial arts who fights with his legs and dreams of finding the All Blue.</p>
+            </div>
+
+            <div class="character-card " data-character="sanji ">
+                <div class="aura "></div>
+                <img src=" " alt="Sanji ">
+                <h3></h3>
+                <p>The Straw Hat cook, a master of martial arts who fights with his legs and dreams of finding the All Blue.</p>
+            </div>
+
+            <div class="character-card " data-character="sanji ">
+                <div class="aura "></div>
+                <img src=" " alt="Sanji ">
+                <h3></h3>
+                <p>The Straw Hat cook, a master of martial arts who fights with his legs and dreams of finding the All Blue.</p>
+            </div>
+
+        </section>
+
+        <a href="index.html " class="back-btn ">⬅ Back to Home</a>
+    </div>
+</body>
+
+</html>
+
+</html>
